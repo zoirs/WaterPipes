@@ -2,7 +2,7 @@
 
 [Serializable]
 public class WaterWellsDto : Base {
-    private WellType wellType;
+    public WellType wellType;
 
     public WaterWellsDto(WellType wellType) {
         this.wellType = wellType;
