@@ -1,0 +1,61 @@
+﻿{
+  "wight": 0,
+  "height": 0,
+  "homes": [
+    {
+      "position": {
+        "x": 12,
+        "y": 12
+      }
+    },
+    {
+      "position": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  ],
+  "inventory": [
+    {
+      "position": {
+        "x": 6,
+        "y": 6
+      },
+      "tubeType": 5,
+      "rotate": 0
+    },
+    {
+      "position": {
+        "x": 10,
+        "y": 7
+      },
+      "tubeType": 2,
+      "rotate": 0
+    },
+    {
+      "position": {
+        "x": 9,
+        "y": 11
+      },
+      "tubeType": 2,
+      "rotate": 0
+    },
+    {
+      "position": {
+        "x": 13,
+        "y": 6
+      },
+      "tubeType": 3,
+      "rotate": 0
+    }
+  ],
+  "stones": [],
+  "waterWells": [
+    {
+      "position": {
+        "x": 13,
+        "y": 10
+      }
+    }
+  ]
+}
