@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DefaultNamespace.Tube;
 using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 public class TubeManager {
     [Inject] private TubeController.Factory _factoryTube;
@@ -110,6 +111,14 @@ public class TubeManager {
             tube.transform.position = new Vector3(item.position.x, item.position.y, 0f);
             tube.Rotate = item.rotate;
             map.Add(tube);   
+        }
+    }
+
+    public void Remove(TubeController tubeController) {
+        TubeController find = map.Find(controller => controller == tubeController);
+        if (find != null) {
+            map.Remove(find);
+            Object.Destroy(find.gameObject);
         }
     }
 }

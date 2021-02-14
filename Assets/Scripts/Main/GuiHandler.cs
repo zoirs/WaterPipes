@@ -74,7 +74,7 @@ public class GuiHandler : MonoBehaviour, IDisposable, IInitializable {
 
         GUILayout.BeginVertical();
         {
-            GUILayout.Space(30);
+            // GUILayout.Space(30);
             GUILayout.BeginHorizontal();
             {
                 GUILayout.Space(30);
@@ -108,6 +108,13 @@ public class GuiHandler : MonoBehaviour, IDisposable, IInitializable {
                     if (GUILayout.Button(new GUIContent(" * " + countLine3, TubeButtonSettings.Line3), GUILayout.Width(100),
                         GUILayout.Height(30))) {
                         _inventoryManager.GetOutOfInventory(TubeType.LINE3);
+                    }
+
+                    int countLine4 = _inventoryManager. InventoryCount(TubeType.LINE3);
+                    GUI.enabled = countLine4 > 0;
+                    if (GUILayout.Button(new GUIContent(" * " + countLine4, TubeButtonSettings.Line4), GUILayout.Width(100),
+                        GUILayout.Height(30))) {
+                        _inventoryManager.GetOutOfInventory(TubeType.LINE4);
                     }
 
                     int countAngle = _inventoryManager. InventoryCount(TubeType.ANGEL);

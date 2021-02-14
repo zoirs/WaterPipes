@@ -27,6 +27,8 @@ MonoBehaviour:
       type: 3}
     Tube3Prefab: {fileID: 3357365151331028421, guid: a3a48af9f20944749b08d2b96104bd8d,
       type: 3}
+    Tube4Prefab: {fileID: 759746000002427301, guid: 7d05a00834462114f9e90896ae7c3459,
+      type: 3}
     TubeAngelPrefab: {fileID: 2889935540644337719, guid: e811ea5e191472049a9ee8231729205d,
       type: 3}
     TubeTrianglePrefab: {fileID: 1568870902441657731, guid: 54717fc5fd525e24196cef48f4533510,

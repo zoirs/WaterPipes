@@ -63,8 +63,8 @@ public static class TubeTypeExtension {
                 return prefabs.Tube2Prefab;
             case TubeType.LINE3:
                 return prefabs.Tube3Prefab;
-            // case TubeType.LINE4:
-                // return prefabs.Tube4Prefab;
+            case TubeType.LINE4:
+                return prefabs.Tube4Prefab;
             case TubeType.ANGEL:
                 return prefabs.TubeAngelPrefab;
             case TubeType.TRIANGLE:

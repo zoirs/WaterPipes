@@ -42,6 +42,7 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
         public GameObject Tube1Prefab;
         public GameObject Tube2Prefab;
         public GameObject Tube3Prefab;
+        public GameObject Tube4Prefab;
         public GameObject TubeAngelPrefab;
         public GameObject TubeTrianglePrefab;
         public GameObject TubeQuatroPrefab;

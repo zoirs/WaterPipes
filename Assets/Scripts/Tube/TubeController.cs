@@ -13,6 +13,7 @@ public class TubeController : MonoBehaviour {
 
     [Inject] private GameSettingsInstaller.TubeMaterialsSettings _materials;
     [Inject] private TubeMapService _tubeMapService;
+    [Inject] private TubeManager _tubeManager;
 
     private TubeState _state = TubeState.SettedCorrect;
 
@@ -68,6 +69,12 @@ public class TubeController : MonoBehaviour {
             case TubeState.Wait:
             case TubeState.SettedCorrect:
             case TubeState.SettedWrong:
+
+                if (Input.GetMouseButtonDown(1) && ClickOnCurrent()) {
+                    _tubeMapService.Free(_points);
+                    _tubeManager.Remove(this);
+                }
+
                 if (Input.GetMouseButtonDown(0) && ClickOnCurrent()) {
                     tapPosition = Input.mousePosition;
                     startPosition = transform.position;
