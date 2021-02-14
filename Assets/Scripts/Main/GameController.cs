@@ -95,9 +95,9 @@ namespace Main {
             // stonesDto.position = new Vector2Int(2, 10);
             // tubeLevel.stones.Add(stonesDto);
 
-            WaterWellsDto waterWellsDto = new WaterWellsDto(WellType.ONE_ONE);
-            waterWellsDto.position = new Vector2Int(5, 1);
-            tubeLevel.waterWells.Add(waterWellsDto);
+            // WaterWellsDto waterWellsDto = new WaterWellsDto(WellType.ONE_ONE);
+            // waterWellsDto.position = new Vector2Int(5, 1);
+            // tubeLevel.waterWells.Add(waterWellsDto);
 
             // InventoryDto inventoryDto = new InventoryDto(TubeType.LINE1, 0);
             // inventoryDto.position = new Vector2Int(5, 1);

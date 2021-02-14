@@ -35,7 +35,11 @@ MonoBehaviour:
       type: 3}
     WaterPrefab: {fileID: 3607321357487799629, guid: 87b99247bf876794d8e36557317943bc,
       type: 3}
+    WaterPrefab2_2: {fileID: 3823751468888406535, guid: 34494507797b7734c8c98ad5127312fe,
+      type: 3}
     HomePrefab: {fileID: 43947668369476119, guid: 125e94e5a76ff7b4a8f39107c3801cd2,
+      type: 3}
+    HomePrefab2_2: {fileID: 4689654805253520765, guid: f40710e5fb58304429b9359b2d994e49,
       type: 3}
     StonePrefab: {fileID: 811567784838161034, guid: 250e9340b68bf89449d88ed1cbce0472,
       type: 3}
@@ -84,4 +88,4 @@ MonoBehaviour:
     Quatro: {fileID: 2800000, guid: 5667d67b1cce8e446a3cf634a27c05dc, type: 3}
     Angle: {fileID: 2800000, guid: 9250a5a12a2d84147b8109d4e35ed801, type: 3}
   Setting:
-    isDebug: 0
+    isDebug: 1

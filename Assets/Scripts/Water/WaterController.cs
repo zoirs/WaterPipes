@@ -39,7 +39,7 @@ public class WaterController : MonoBehaviour {
     }
 
 
-    public class Factory : PlaceholderFactory<WaterController> { }
+    public class Factory : PlaceholderFactory<WaterCreateParam, WaterController> { }
     
     
     // временно, для отладки

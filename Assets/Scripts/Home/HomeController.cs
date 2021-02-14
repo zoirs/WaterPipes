@@ -41,7 +41,7 @@ public class HomeController : MonoBehaviour {
     //
     // }
 
-    public class Factory : PlaceholderFactory<HomeController> { }
+    public class Factory : PlaceholderFactory<HomeCreateParam, HomeController> { }
 
     public void MarkWater() {
         SetMaterial(_materials.Water);

@@ -141,8 +141,19 @@ public class GuiHandler : MonoBehaviour, IDisposable, IInitializable {
                     // _waterManager.Create();
                     // }
                     if (setting.isDebug) {
-                        if (GUILayout.Button("Дом")) {
-                            _homeManager.Create();
+                        if (GUILayout.Button("Дом 1*1")) {
+                            _homeManager.Create(HomeType.ONE_ONE);
+                        }
+
+                        if (GUILayout.Button("Дом 2*2")) {
+                            _homeManager.Create(HomeType.TWO_TWO);
+                        }
+                        
+                        if (GUILayout.Button("Колодец 1*1")) {
+                            _waterManager.Create(WellType.ONE_ONE);
+                        }
+                        if (GUILayout.Button("Колодец 2*2")) {
+                            _waterManager.Create(WellType.TWO_TWO);
                         }
 
                         if (GUILayout.Button("Камень")) {

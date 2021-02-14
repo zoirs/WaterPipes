@@ -48,7 +48,9 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
         
         
         public GameObject WaterPrefab;
+        public GameObject WaterPrefab2_2;
         public GameObject HomePrefab;
+        public GameObject HomePrefab2_2;
         public GameObject StonePrefab;
     }
     

@@ -7,6 +7,8 @@ public class DebugMoveController : MonoBehaviour {
     Vector3 finishPosition = Vector3.zero;
     Vector3 startPosition = Vector3.zero;
     private bool inMove = false;
+    // [Inject] private TubeMapService _tubeMapService;
+
     
     // [Inject] private TubeMapService _tubeMapService;
     // private PointController[] _points;

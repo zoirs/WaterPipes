@@ -48,15 +48,15 @@ public class GameInstaller : MonoInstaller {
             .WithGameObjectName("Station")
             .UnderTransformGroup("Stations");
 
-        Container.BindFactory<WaterController, WaterController.Factory>()
-            .FromComponentInNewPrefab(_prefabs.WaterPrefab)
-            .WithGameObjectName("Water")
-            .UnderTransformGroup("Waters");
-
-        Container.BindFactory<HomeController, HomeController.Factory>()
-            .FromComponentInNewPrefab(_prefabs.HomePrefab)
-            .WithGameObjectName("Home")
-            .UnderTransformGroup("Homes");
+        // Container.BindFactory<WaterController, WaterController.Factory>()
+        //     .FromComponentInNewPrefab(_prefabs.WaterPrefab)
+        //     .WithGameObjectName("Water")
+        //     .UnderTransformGroup("Waters");
+        //
+        // Container.BindFactory<HomeController, HomeController.Factory>()
+        //     .FromComponentInNewPrefab(_prefabs.HomePrefab)
+        //     .WithGameObjectName("Home")
+        //     .UnderTransformGroup("Homes");
 
         Container.BindFactory<ManufacturerController, ManufacturerController.Factory>()
             .FromComponentInNewPrefab(_prefabs.ManufacturePrefab)
@@ -75,6 +75,10 @@ public class GameInstaller : MonoInstaller {
 
         Container.BindFactory<TubeCreateParam, TubeController, TubeController.Factory>()
             .FromMethod(CreateTube); //рабочий вариант
+        Container.BindFactory<HomeCreateParam, HomeController, HomeController.Factory>()
+            .FromMethod(CreateHome); //рабочий вариант
+        Container.BindFactory<WaterCreateParam,  WaterController, WaterController.Factory>()
+            .FromMethod(CreateWater); //рабочий вариант
 
 //        Container.BindFactory<ProductEntity, ProductEntity.Factory>()
 //            .FromComponentInNewPrefab(_prefabs.PeoplePrefab)
@@ -87,7 +91,22 @@ public class GameInstaller : MonoInstaller {
     TubeController CreateTube(DiContainer subContainer, TubeCreateParam createParam) {
         TubeController controller =
             subContainer.InstantiatePrefabForComponent<TubeController>(createParam.Prefab,
-                GameObject.Find("Tube").transform);
+                GameObject.Find("Tubes").transform);
+        return controller;
+    }
+
+    HomeController CreateHome(DiContainer subContainer, HomeCreateParam createParam) {
+        HomeController controller =
+            subContainer.InstantiatePrefabForComponent<HomeController>(createParam.Prefab,
+                GameObject.Find("Homes").transform);
+        return controller;
+    }
+
+
+    WaterController CreateWater(DiContainer subContainer, WaterCreateParam createParam) {
+        WaterController controller =
+            subContainer.InstantiatePrefabForComponent<WaterController>(createParam.Prefab,
+                GameObject.Find("Waters").transform);
         return controller;
     }
 
