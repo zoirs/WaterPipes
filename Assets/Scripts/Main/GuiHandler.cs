@@ -110,7 +110,7 @@ public class GuiHandler : MonoBehaviour, IDisposable, IInitializable {
                         _inventoryManager.GetOutOfInventory(TubeType.LINE3);
                     }
 
-                    int countLine4 = _inventoryManager. InventoryCount(TubeType.LINE3);
+                    int countLine4 = _inventoryManager. InventoryCount(TubeType.LINE4);
                     GUI.enabled = countLine4 > 0;
                     if (GUILayout.Button(new GUIContent(" * " + countLine4, TubeButtonSettings.Line4), GUILayout.Width(100),
                         GUILayout.Height(30))) {
