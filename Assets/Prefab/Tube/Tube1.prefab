@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
+  tubeController: {fileID: 3399094470582080072}
 --- !u!1 &5576503969858071273
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
+  tubeController: {fileID: 3399094470582080072}
 --- !u!114 &9102735231652985071
 MonoBehaviour:
   m_ObjectHideFlags: 0

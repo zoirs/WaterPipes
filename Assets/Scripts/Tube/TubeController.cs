@@ -23,6 +23,7 @@ public class TubeController : MonoBehaviour {
     private bool _hasWater;
 
     private int _rotate = 0;
+    private Removable removable;
 
 
     // public bool _isChecked { get; private set; }
@@ -30,7 +31,6 @@ public class TubeController : MonoBehaviour {
     Vector3 tapPosition = Vector3.zero;
     Vector3 finishPosition = Vector3.zero;
     Vector3 startPosition = Vector3.zero;
-    private FingerMoveController _fingerMoveController;
     private PointController[] _points;
 
 
@@ -53,13 +53,27 @@ public class TubeController : MonoBehaviour {
         return _tubeType.GetWaterDirection(_rotate);
     }
 
-    public Dictionary<Direction, Vector3Int> GetEndPositions() {
+    public Dictionary<Direction, Vector3Int> GetFreeEndPositions() {
         Dictionary<Direction, Vector3Int> endPositions = new Dictionary<Direction, Vector3Int>();
         foreach (TubeEndController tubeEndController in _ends) {
+            if (tubeEndController.IsConnected()) {
+                continue;
+            }
             endPositions.Add(tubeEndController.GetDirection(_rotate), tubeEndController.GetVector());
         }
 
         return endPositions;
+    }    
+    
+    public List<TubeEndController> GetFreeConnecter() {
+        List<TubeEndController> result = new List<TubeEndController>();
+        foreach (TubeEndController tubeEndController in _ends) {
+            if (tubeEndController.IsConnected()) {
+                continue;
+            }
+            result.Add(tubeEndController);
+        }
+        return result;
     }
 
     private void Update() {
@@ -70,10 +84,11 @@ public class TubeController : MonoBehaviour {
             case TubeState.SettedCorrect:
             case TubeState.SettedWrong:
 
-                if (Input.GetMouseButtonDown(1) && ClickOnCurrent()) {
-                    _tubeMapService.Free(_points);
-                    _tubeManager.Remove(this);
-                }
+                // if (Input.GetMouseButtonDown(1) && ClickOnCurrent()) {
+                //     _tubeMapService.Free(_points);
+                //     _tubeManager.Remove(this);
+                //     removable.CheckRemove(_tubeManager);
+                // }
 
                 if (Input.GetMouseButtonDown(0) && ClickOnCurrent()) {
                     tapPosition = Input.mousePosition;
@@ -155,6 +170,9 @@ public class TubeController : MonoBehaviour {
     public void Clear() {
         SetMaterial(_materials.Empty);
         _hasWater = false;
+        foreach (TubeEndController tubeEndController in _ends) {
+            tubeEndController.UnConnect();
+        }
     }
 
     private void SetMaterial(Material meshRendererMaterial) {

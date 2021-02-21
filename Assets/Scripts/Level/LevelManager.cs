@@ -22,24 +22,20 @@
 
         public void SaveLevel() {
             TubeLevel tubeLevel = new TubeLevel();
-            foreach (HomeController homeManagerHome in _homeManager.Homes) {
-                HomesDto item = new HomesDto(homeManagerHome.HomeType);
-                item.position = (Vector2Int) homeManagerHome.GetVector()  - q;
+            foreach (HomeController homeManagerHome in _homeManager.Objects) {
+                HomesDto item = new HomesDto(homeManagerHome.HomeType, (Vector2Int) homeManagerHome.GetVector()  - q);
                 tubeLevel.homes.Add(item);
             }
-            foreach (TubeController tubeController in _tubeManager.Map) {
-                InventoryDto inventoryDto = new InventoryDto(tubeController.TubeType, tubeController.Rotate);
-                inventoryDto.position = (Vector2Int) tubeController.GetVector() - q;
+            foreach (TubeController tubeController in _tubeManager.Objects) {
+                InventoryDto inventoryDto = new InventoryDto(tubeController.TubeType, (Vector2Int) tubeController.GetVector() - q, tubeController.Rotate);
                 tubeLevel.inventory.Add(inventoryDto);
             }
-            foreach (WaterController item in _waterManager.WaterControllers) {
-                WaterWellsDto wellsDto = new WaterWellsDto(item.WellType);
-                wellsDto.position = (Vector2Int) item.GetVector() - q;
+            foreach (WaterController item in _waterManager.Objects) {
+                WaterWellsDto wellsDto = new WaterWellsDto(item.WellType, (Vector2Int) item.GetVector() - q);
                 tubeLevel.waterWells.Add(wellsDto);
             }
-            foreach (StoneController item in _stoneManager.Items) {
-                StonesDto stonesDto = new StonesDto();
-                stonesDto.position = (Vector2Int) item.GetVector() - q;
+            foreach (StoneController item in _stoneManager.Objects) {
+                StonesDto stonesDto = new StonesDto((Vector2Int) item.GetVector() - q);
                 tubeLevel.stones.Add(stonesDto);
             }
 
@@ -56,13 +52,10 @@
         }
 
         public void LoadLevel(TubeLevel level) {
-            _waterManager.Start(level.waterWells);
-            _homeManager.Start(level.homes);
-            _stoneManager.Start(level.stones);
-            if (_setting.isDebug) {
-                _tubeManager.Start(level.inventory);
-            } else {
-                _inventoryManager.Start(level.inventory);
-            }
+            _waterManager.Reload(level.waterWells);
+            _homeManager.Reload(level.homes);
+            _stoneManager.Reload(level.stones);
+            _tubeManager.Reload(level.inventory);
+            _inventoryManager.Unlock(level.inventory);
         }
     }

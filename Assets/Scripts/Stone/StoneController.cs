@@ -37,7 +37,7 @@ public class StoneController : MonoBehaviour {
     }
 
 
-    public class Factory : PlaceholderFactory<StoneController> { }
+    public class Factory : PlaceholderFactory<StoneCreateParam, StoneController> { }
     
     
     // временно, для отладки

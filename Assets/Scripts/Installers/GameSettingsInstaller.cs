@@ -13,7 +13,6 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
     // public PeopleMaterialsSettings PeopleMaterials;
     // public PeopleSettings People;
     public ProductSettings Product;
-    public TrainController.Settings TrainSetting;
     public MoneyService.PriceSettings PriceSettings;
     public TaskSetting TaskSettings;
     public ManufactureSettings ManufactureSetting;
@@ -43,6 +42,7 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
         public GameObject Tube2Prefab;
         public GameObject Tube3Prefab;
         public GameObject Tube4Prefab;
+        public GameObject Tube5Prefab;
         public GameObject TubeAngelPrefab;
         public GameObject TubeTrianglePrefab;
         public GameObject TubeQuatroPrefab;
@@ -91,6 +91,7 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
         public Texture Line2;
         public Texture Line3;
         public Texture Line4;
+        public Texture Line5;
         public Texture Triangle;
         public Texture Quatro;
         public Texture Angle;
@@ -134,7 +135,6 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
         Container.BindInstance(LineMaterials);
         // Container.BindInstance(PeopleMaterials);
         // Container.BindInstance(People.Spawner);
-        Container.BindInstance(TrainSetting);
         Container.BindInstance(PriceSettings);
         Container.BindInstance(Product);
         Container.BindInstance(TaskSettings);

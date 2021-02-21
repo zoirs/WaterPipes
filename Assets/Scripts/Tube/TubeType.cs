@@ -10,7 +10,8 @@ public enum TubeType {
     LINE4,
     ANGEL,
     TRIANGLE,
-    QUATRO
+    QUATRO,
+    LINE5,
 }
 
 //    3
@@ -25,6 +26,7 @@ public static class TubeTypeExtension {
             case TubeType.LINE2:
             case TubeType.LINE3:
             case TubeType.LINE4:
+            case TubeType.LINE5:
                 return new List<Direction>() {Direction.DOWN, Direction.UP};
             case TubeType.ANGEL:
                 return new List<Direction>() {Direction.DOWN, Direction.RIGHT};
@@ -43,6 +45,7 @@ public static class TubeTypeExtension {
             case TubeType.LINE2:
             case TubeType.LINE3:
             case TubeType.LINE4:
+            case TubeType.LINE5:
                 return new List<Direction>() {Direction.DOWN.Rotate(rotate), Direction.UP.Rotate(rotate)};
             case TubeType.ANGEL:
                 return new List<Direction>() {Direction.DOWN.Rotate(rotate), Direction.RIGHT.Rotate(rotate)};
@@ -65,6 +68,8 @@ public static class TubeTypeExtension {
                 return prefabs.Tube3Prefab;
             case TubeType.LINE4:
                 return prefabs.Tube4Prefab;
+            case TubeType.LINE5:
+                return prefabs.Tube5Prefab;
             case TubeType.ANGEL:
                 return prefabs.TubeAngelPrefab;
             case TubeType.TRIANGLE:

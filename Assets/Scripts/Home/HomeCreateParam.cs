@@ -1,11 +1,5 @@
-﻿    using UnityEngine;
+﻿using UnityEngine;
 
-    public class HomeCreateParam {
-        private GameObject prefab;
-        
-        public HomeCreateParam(GameObject prefab) {
-            this.prefab = prefab;
-        }
-
-        public GameObject Prefab => prefab;       
+public class HomeCreateParam : CreateParam {
+    public HomeCreateParam(GameObject prefab, Vector2Int position) : base(prefab, position) { }
 }

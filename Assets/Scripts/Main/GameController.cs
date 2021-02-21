@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using DefaultNamespace;
-using Line;
 using UnityEngine;
 using Zenject;
 
@@ -11,28 +8,24 @@ namespace Main {
     public enum GameStates {
         WaitingToStart,
         Playing,
+        LevelComplete,
         GameOver
     }
 
     public class GameController : IInitializable, ITickable, IDisposable {
         // readonly PeopleManager _peopleManager;
-        readonly LineManager _lineManager;
-        readonly TaskManager _taskManager;
-        readonly WaterManager _waterManager;
         readonly HomeManager _homeManager;
         readonly StoneManager _stoneManager;
         readonly InventoryManager _inventory;
         readonly LevelManager _levelManager;
 
-        private List<string> levels = new List<string>(); 
+        private List<string> levels = new List<string>();
+        private int currentLevel;
 
         GameStates _state = GameStates.WaitingToStart;
 
-        public GameController(LineManager lineManager, TaskManager taskManager, WaterManager waterManager,HomeManager homeManager,StoneManager stoneManager, InventoryManager inventory,LevelManager levelManager) {
+        public GameController(HomeManager homeManager,StoneManager stoneManager, InventoryManager inventory,LevelManager levelManager) {
             // _peopleManager = peopleManager;
-            _lineManager = lineManager;
-            _taskManager = taskManager;
-            _waterManager = waterManager;
             _homeManager = homeManager;
             _stoneManager = stoneManager;
             _inventory = inventory;
@@ -102,13 +95,14 @@ namespace Main {
             // InventoryDto inventoryDto = new InventoryDto(TubeType.LINE1, 0);
             // inventoryDto.position = new Vector2Int(5, 1);
             // tubeLevel.inventory.Add(inventoryDto);
- 
+            currentLevel = levels.Count;
             _levelManager.LoadLevel(tubeLevel);
 
             _state = GameStates.Playing;
         }
 
-        public void StartGame(string levelName) {
+        public void StartGame(int index) {
+            currentLevel = index;
   
             // string json = JsonUtility.ToJson(tubeLevel);
             // Debug.Log(json);
@@ -118,7 +112,7 @@ namespace Main {
             
             // TubeLevel level = JsonUtility.FromJson<TubeLevel>(json);
 
-            string filepath = Application.persistentDataPath + "/" + levelName;
+            string filepath = Application.persistentDataPath + "/" + levels[index];
 
             StreamReader reader = new StreamReader(filepath);
 
@@ -132,6 +126,21 @@ namespace Main {
 
         public List<string> Levels => levels;
 
-        public GameStates State => _state;
+        public int CurrentLevel => currentLevel;
+
+        public GameStates State {
+            get => _state;
+            set => _state = value;
+        }
+
+        public void LoadNext() {
+            currentLevel++;
+            if (currentLevel >= levels.Count) {
+                currentLevel = 0;
+            }
+
+            StartGame(currentLevel);
+
+        }
     }
 }

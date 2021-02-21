@@ -1,11 +1,5 @@
-﻿    using UnityEngine;
+﻿using UnityEngine;
 
-    public class WaterCreateParam {
-        private GameObject prefab;
-        
-        public WaterCreateParam(GameObject prefab) {
-            this.prefab = prefab;
-        }
-
-        public GameObject Prefab => prefab;       
+public class WaterCreateParam : CreateParam {
+    public WaterCreateParam(GameObject prefab, Vector2Int position) : base(prefab, position) { }
 }

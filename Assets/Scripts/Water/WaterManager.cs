@@ -1,58 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using Zenject;
 
-public class WaterManager {
-    
-    [Inject] private WaterController.Factory _factory;
-    [Inject] private TubeManager tubeManager;
-    [Inject] private GameSettingsInstaller.GameSetting setting;
-    [Inject] private GameSettingsInstaller.PrefabSettings prefabs;
-    [Inject] private TubeMapService _tubeMapService;
+public class WaterManager : ObjectManager<WaterController, WaterWellsDto, WaterCreateParam> {
+    private readonly GameSettingsInstaller.PrefabSettings prefabs;
 
-    private List<WaterController> waterControllers = new List<WaterController>();
-
-    public void Start(List<WaterWellsDto> levelWaterWells) {
-        foreach (WaterWellsDto well in levelWaterWells) {
-            WaterController item = _factory.Create(new WaterCreateParam(well.wellType.GetPrefab(prefabs)));
-            if (setting.isDebug) {
-                item.gameObject.AddComponent<DebugMoveController>();
-            }
-
-            item.transform.position = new Vector3(well.position.x,well.position.y, 0f);
-            _tubeMapService.Busy(item.GetComponentsInChildren<PointController>());
-            waterControllers.Add(item);
-        }
+    public WaterManager(TubeMapService tubeMapService,
+        GameSettingsInstaller.GameSetting setting,
+        WaterController.Factory factory,
+        GameSettingsInstaller.PrefabSettings prefabs, DiContainer container)
+        : base(tubeMapService, setting, prefabs, factory, container) {
+        this.prefabs = prefabs;
     }
 
-    public void Check() {
-        tubeManager.Clear();
-        foreach (WaterController waterController in waterControllers) {
-            PointController[] points = waterController.GetComponentsInChildren<PointController>();
-            foreach (PointController point in points) {
-                Vector3Int wpInt = point.GetVector();
-                tubeManager.Find(wpInt + Vector3Int.down, Direction.UP);
-                tubeManager.Find(wpInt + Vector3Int.up, Direction.DOWN);
-                tubeManager.Find(wpInt + Vector3Int.left, Direction.RIGHT);
-                tubeManager.Find(wpInt + Vector3Int.right, Direction.LEFT);
-            }
-        }
-        // Vector3 wp = waterControllers[0].transform.position;
-        // Vector3Int wpInt = new Vector3Int((int) wp.x, (int) wp.y, (int) wp.z);
-        // tubeManager.Find(wpInt + Vector3Int.down, Direction.UP);
-        // tubeManager.Find(wpInt + Vector3Int.up, Direction.DOWN);
-        // tubeManager.Find(wpInt + Vector3Int.left, Direction.RIGHT);
-        // tubeManager.Find(wpInt + Vector3Int.right, Direction.LEFT);
+    // public override WaterController Create(WaterWellsDto dto) {
+    // return _factory.Create(new WaterCreateParam(dto.GetPrefab(prefabs), dto.position));
+    // }
+
+    public override WaterCreateParam Convert(WaterWellsDto dto) {
+        return new WaterCreateParam(dto.GetPrefab(prefabs), dto.position);
     }
 
-    public List<WaterController> WaterControllers => waterControllers;
+    // public override WaterController Create(GameObject prefab) {
+    // return _factory.Create(new WaterCreateParam(prefab, Vector2Int.zero));
+    // }
 
-    public void Create(WellType wellType) {
-        WaterController waterController = _factory.Create(new WaterCreateParam(wellType.GetPrefab(prefabs)));
-        waterController.transform.position = new Vector3(  5,  5f, 0f);
-        if (setting.isDebug) {
-            waterController.gameObject.AddComponent<DebugMoveController>();
+    public void CreateDebug(WellType wellType) {
+        if (!_setting.isDebug) {
+            throw new Exception("Unsupport");
         }
-        waterControllers.Add(waterController);
+
+        Create(new WaterWellsDto(wellType, Constants.CREATE_POSITION));
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6613646967417046900}
   - component: {fileID: 9068300776116241053}
   - component: {fileID: 7549319747663499524}
-  - component: {fileID: 1821532233441819742}
   m_Layer: 0
   m_Name: Tube4
   m_TagString: Untagged
@@ -62,19 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0ccec64efc4bbb95abe0c76077656f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tubeType: 3
---- !u!114 &1821532233441819742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759746000002427301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca15d23617144747a2e5c685c5fe97a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _tubeType: 4
 --- !u!1 &3036698476379836918
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
+  tubeController: {fileID: 7549319747663499524}
 --- !u!114 &8596953601879392339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
+  tubeController: {fileID: 7549319747663499524}
 --- !u!114 &5389547762672168682
 MonoBehaviour:
   m_ObjectHideFlags: 0

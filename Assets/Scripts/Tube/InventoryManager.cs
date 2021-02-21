@@ -6,10 +6,16 @@ public class InventoryManager {
     [Inject] private GameSettingsInstaller.GameSetting setting;
     [Inject] private GameSettingsInstaller.PrefabSettings prefabs;
     [Inject] private TubeManager _tubeManager;
+    [Inject]
+    private GameSettingsInstaller.GameSetting _setting;
 
     private Dictionary<TubeType, int> inventory = new Dictionary<TubeType, int>();
 
-    public void Start(List<InventoryDto> inventoryDtos) {
+    public void Unlock(List<InventoryDto> inventoryDtos) {
+        if (_setting.isDebug) {
+            return;            
+        }
+
         foreach (InventoryDto inventoryDto in inventoryDtos) {
             int count = 0;
             if (inventory.ContainsKey(inventoryDto.tubeType)) {
@@ -47,6 +53,6 @@ public class InventoryManager {
             }
             inventory[tubeType] = count - 1;
         }
-        _tubeManager.Create(tubeType.GetPrefab(prefabs));
+        _tubeManager.Create(new InventoryDto(tubeType, Constants.CREATE_POSITION, 0));
     }
 }

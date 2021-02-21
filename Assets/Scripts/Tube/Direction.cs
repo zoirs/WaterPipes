@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public enum Direction {
     DOWN,
@@ -18,6 +19,36 @@ public static class DirectionExtension {
                 return 2;
             case Direction.LEFT:
                 return 4;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(tuneType), tuneType, null);
+        }
+    }    
+    
+    public static Vector3Int GetVector(this Direction tuneType) {
+        switch (tuneType) {
+            case Direction.DOWN:
+                return Vector3Int.down;
+            case Direction.UP:
+                return Vector3Int.up;
+            case Direction.RIGHT:
+                return Vector3Int.right;
+            case Direction.LEFT:
+                return Vector3Int.left;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(tuneType), tuneType, null);
+        }
+    }   
+    
+    public static Direction Invert(this Direction tuneType) {
+        switch (tuneType) {
+            case Direction.DOWN:
+                return Direction.UP;
+            case Direction.UP:
+                return Direction.DOWN;
+            case Direction.RIGHT:
+                return Direction.LEFT;
+            case Direction.LEFT:
+                return Direction.RIGHT;
             default:
                 throw new ArgumentOutOfRangeException(nameof(tuneType), tuneType, null);
         }

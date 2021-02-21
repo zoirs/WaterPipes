@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Tube {
-    public class TubeCreateParam {
-        private GameObject prefab;
-        
-        public TubeCreateParam(GameObject prefab) {
-            this.prefab = prefab;
-        }
+public class TubeCreateParam : CreateParam {
+    private readonly int rotation;
 
-        public GameObject Prefab => prefab;
+    public TubeCreateParam(GameObject prefab, int rotation, Vector2Int position) : base(prefab, position) {
+        this.rotation = rotation;
     }
+
+    public int Rotation => rotation;
 }
