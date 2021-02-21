@@ -17,7 +17,7 @@ public class GuiHandler : MonoBehaviour {
     [Inject] private LevelManager _levelManager;
     [Inject] private InventoryManager _inventoryManager;
     [Inject] private GameSettingsInstaller.PrefabSettings prefabs;
-
+    
     [Inject] private GameSettingsInstaller.GameSetting setting;
 
     Rect windowRect = new Rect(300, 200, 180, 200);
@@ -59,10 +59,12 @@ public class GuiHandler : MonoBehaviour {
                     if (GUILayout.Button("Остаться")) {
                         _gameController.State = GameStates.Playing;
                     }
-                    if (GUILayout.Button("Следующий")) {
-                        _gameController.LoadNext();
-                    }
 
+                    if (!setting.isDebug) {
+                        if (GUILayout.Button("Следующий")) {
+                            _gameController.LoadNext();
+                        }
+                    }
                 }
                 GUILayout.EndHorizontal();
                 

@@ -91,4 +91,4 @@ MonoBehaviour:
     Quatro: {fileID: 2800000, guid: 5667d67b1cce8e446a3cf634a27c05dc, type: 3}
     Angle: {fileID: 2800000, guid: 9250a5a12a2d84147b8109d4e35ed801, type: 3}
   Setting:
-    isDebug: 1
+    isDebug: 0
