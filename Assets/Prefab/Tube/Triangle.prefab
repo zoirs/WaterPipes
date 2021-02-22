@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  tubeController: {fileID: 7044906079620619207}
+  parent: {fileID: 1568870902441657731}
 --- !u!114 &6109347238914792887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 3
-  tubeController: {fileID: 7044906079620619207}
+  parent: {fileID: 1568870902441657731}
 --- !u!1 &1568870902441657731
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,4 +397,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  tubeController: {fileID: 7044906079620619207}
+  parent: {fileID: 1568870902441657731}

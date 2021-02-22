@@ -12,7 +12,7 @@ public abstract class ObjectManager<CONTROLLER, DTO, CREATE>
     protected GameSettingsInstaller.GameSetting _setting;
 
     private List<CONTROLLER> objects = new List<CONTROLLER>();
-    private GameSettingsInstaller.PrefabSettings prefabs;
+    protected GameSettingsInstaller.PrefabSettings prefabs;
     private PlaceholderFactory<CREATE, CONTROLLER> _factory;
     private DiContainer _container;
     

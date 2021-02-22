@@ -8,6 +8,7 @@ public class GuiHandler : MonoBehaviour {
 
     [Inject] private TubeManager _tubeManager;
     [Inject] private StoneManager _stoneManager;
+    [Inject] private PortalManager _portalManager;
     [Inject] private HomeManager _homeManager;
 
     [Inject] private GameSettingsInstaller.TubeButtonSettings TubeButtonSettings;
@@ -194,6 +195,9 @@ public class GuiHandler : MonoBehaviour {
 
                     if (GUILayout.Button("Камень")) {
                         _stoneManager.CreateDebug();
+                    }
+                    if (GUILayout.Button("Портал")) {
+                        _portalManager.CreateDebug();
                     }
 
                     if (GUILayout.Button("Сохранить уровень")) {

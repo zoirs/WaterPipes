@@ -18,7 +18,7 @@ public class TubeController : MonoBehaviour {
     private TubeState _state = TubeState.SettedCorrect;
 
     private MeshRenderer[] _renderer;
-    private TubeEndController[] _ends;
+    private ConnectorController[] _ends;
 
     private bool _hasWater;
 
@@ -36,7 +36,7 @@ public class TubeController : MonoBehaviour {
 
     private void Start() {
         _renderer = GetComponentsInChildren<MeshRenderer>();
-        _ends = GetComponentsInChildren<TubeEndController>();
+        _ends = GetComponentsInChildren<ConnectorController>();
         _points = GetComponentsInChildren<PointController>();
         // transform.position = new Vector3(6, 6, 0);
         // _fingerMoveController = GetComponent<FingerMoveController>();
@@ -55,7 +55,7 @@ public class TubeController : MonoBehaviour {
 
     public Dictionary<Direction, Vector3Int> GetFreeEndPositions() {
         Dictionary<Direction, Vector3Int> endPositions = new Dictionary<Direction, Vector3Int>();
-        foreach (TubeEndController tubeEndController in _ends) {
+        foreach (ConnectorController tubeEndController in _ends) {
             if (tubeEndController.IsConnected()) {
                 continue;
             }
@@ -65,9 +65,9 @@ public class TubeController : MonoBehaviour {
         return endPositions;
     }    
     
-    public List<TubeEndController> GetFreeConnecter() {
-        List<TubeEndController> result = new List<TubeEndController>();
-        foreach (TubeEndController tubeEndController in _ends) {
+    public List<ConnectorController> GetFreeConnecter() {
+        List<ConnectorController> result = new List<ConnectorController>();
+        foreach (ConnectorController tubeEndController in _ends) {
             if (tubeEndController.IsConnected()) {
                 continue;
             }
@@ -153,8 +153,8 @@ public class TubeController : MonoBehaviour {
                 _rotate = _rotate % 4;
             }
 
-            TubeEndController[] parts = GetComponentsInChildren<TubeEndController>();
-            foreach (TubeEndController part in parts) {
+            ConnectorController[] parts = GetComponentsInChildren<ConnectorController>();
+            foreach (ConnectorController part in parts) {
                 Debug.Log("pos " + part.GetVector() + " - " + part.GetDirection(_rotate));
             }
         }
@@ -170,7 +170,7 @@ public class TubeController : MonoBehaviour {
     public void Clear() {
         SetMaterial(_materials.Empty);
         _hasWater = false;
-        foreach (TubeEndController tubeEndController in _ends) {
+        foreach (ConnectorController tubeEndController in _ends) {
             tubeEndController.UnConnect();
         }
     }

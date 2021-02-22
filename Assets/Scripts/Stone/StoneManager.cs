@@ -4,14 +4,14 @@ using Zenject;
 
 public class StoneManager : ObjectManager<StoneController, StonesDto, StoneCreateParam> {
 
-    private GameSettingsInstaller.PrefabSettings prefabs;
+    // private GameSettingsInstaller.PrefabSettings prefabs;
     // private GameSettingsInstaller.GameSetting setting;
     // private TubeMapService _tubeMapService;
 
     public StoneManager(StoneController.Factory factory, TubeMapService tubeMapService,
         GameSettingsInstaller.GameSetting setting, GameSettingsInstaller.PrefabSettings prefabSettings, DiContainer container) : base(
         tubeMapService, setting, prefabSettings, factory, container) {
-        prefabs = prefabSettings;
+        // prefabs = prefabSettings;
     }
 
     // private List<StoneController> items = new List<StoneController>();

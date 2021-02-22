@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
-  tubeController: {fileID: 5537311432294839652}
+  parent: {fileID: 3357365151331028421}
 --- !u!114 &9028720501938671820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  tubeController: {fileID: 5537311432294839652}
+  parent: {fileID: 3357365151331028421}
 --- !u!114 &7986971235276081802
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class HomeController : MonoBehaviour {
     [Inject] private TubeMapService _tubeMapService;
 
     private bool _hasWater;
-    private TubeEndController[] _ends;
+    private ConnectorController[] _ends;
 
     // временно, для отладки
     // Vector3 tapPosition = Vector3.zero;
@@ -24,12 +24,12 @@ public class HomeController : MonoBehaviour {
 
     private void Start() {
         _renderer = GetComponentsInChildren<MeshRenderer>();
-        _ends = GetComponentsInChildren<TubeEndController>();
+        _ends = GetComponentsInChildren<ConnectorController>();
     }
     
-    public List<TubeEndController> GetFreeConnecter() {
-        List<TubeEndController> result = new List<TubeEndController>();
-        foreach (TubeEndController tubeEndController in _ends) {
+    public List<ConnectorController> GetFreeConnecter() {
+        List<ConnectorController> result = new List<ConnectorController>();
+        foreach (ConnectorController tubeEndController in _ends) {
             if (tubeEndController.IsConnected()) {
                 continue;
             }
@@ -72,7 +72,7 @@ public class HomeController : MonoBehaviour {
     public void Clear() {
         SetMaterial(_materials.Empty);
         _hasWater = false;
-        foreach (TubeEndController tubeEndController in _ends) {
+        foreach (ConnectorController tubeEndController in _ends) {
             tubeEndController.UnConnect();
         }
     }

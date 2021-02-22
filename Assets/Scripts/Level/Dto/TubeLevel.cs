@@ -9,5 +9,5 @@ public class TubeLevel {
         public List<InventoryDto> inventory = new List<InventoryDto>();
         public List<StonesDto> stones = new List<StonesDto>();
         public List<WaterWellsDto> waterWells = new List<WaterWellsDto>();
-
+        public List<PortalDto> portals = new List<PortalDto>();
 }

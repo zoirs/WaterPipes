@@ -9,6 +9,7 @@ using Object = UnityEngine.Object;
 public class TubeManager : ObjectManager<TubeController, InventoryDto, TubeCreateParam> {
     // [Inject] private TubeController.Factory _factoryTube;
     [Inject] private HomeManager _homeManager;
+    [Inject] private PortalManager _portalManager;
 
     // [Inject] private GameSettingsInstaller.GameSetting setting;
     // [Inject] private TubeMapService _tubeMapService;
@@ -33,6 +34,7 @@ public class TubeManager : ObjectManager<TubeController, InventoryDto, TubeCreat
         }
 
         _homeManager.Clear();
+        _portalManager.Clear();
     }
 
     

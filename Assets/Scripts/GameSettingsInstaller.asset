@@ -13,14 +13,6 @@ MonoBehaviour:
   m_Name: GameSettingsInstaller
   m_EditorClassIdentifier: 
   Prefabs:
-    LinePrefab: {fileID: 5070620176655214892, guid: 0c7f7ac0091b8884eb1baa262157bf16,
-      type: 3}
-    TrainPrefab: {fileID: 2283344040578458472, guid: 6dbcfca8b38ef7742bd64fe5b06a5f07,
-      type: 3}
-    StationPrefab: {fileID: 2128125618180923490, guid: 6cbf610c8ed7b824da76acaab83c2e2d,
-      type: 3}
-    ManufacturePrefab: {fileID: 1629501496476369433, guid: 63ace1196da199e4d85a425267c2f2a5,
-      type: 3}
     Tube1Prefab: {fileID: 5576503969858071273, guid: f4fe895855b80c849a77ac9ae18e82e7,
       type: 3}
     Tube2Prefab: {fileID: 5739412149781038218, guid: afed1a3d13994c448b35759424580361,
@@ -46,6 +38,8 @@ MonoBehaviour:
     HomePrefab2_2: {fileID: 4689654805253520765, guid: f40710e5fb58304429b9359b2d994e49,
       type: 3}
     StonePrefab: {fileID: 811567784838161034, guid: 250e9340b68bf89449d88ed1cbce0472,
+      type: 3}
+    PortalPrefab: {fileID: 8867269723360513759, guid: 53cd4b51cfd718446a546d90b5805826,
       type: 3}
   LineMaterials:
     NotUsed: {fileID: 2100000, guid: 737540abba71b2348a2eed738029afe3, type: 2}
@@ -91,4 +85,4 @@ MonoBehaviour:
     Quatro: {fileID: 2800000, guid: 5667d67b1cce8e446a3cf634a27c05dc, type: 3}
     Angle: {fileID: 2800000, guid: 9250a5a12a2d84147b8109d4e35ed801, type: 3}
   Setting:
-    isDebug: 0
+    isDebug: 1

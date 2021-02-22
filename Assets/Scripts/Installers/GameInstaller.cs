@@ -21,6 +21,7 @@ public class GameInstaller : MonoInstaller {
         Container.BindInterfacesAndSelfTo<InventoryManager>().AsSingle();
         Container.BindInterfacesAndSelfTo<LevelManager>().AsSingle();
         Container.BindInterfacesAndSelfTo<StoneManager>().AsSingle();
+        Container.BindInterfacesAndSelfTo<PortalManager>().AsSingle();
 
         
         // Container.BindFactory<StoneController, StoneController.Factory>()
@@ -28,6 +29,8 @@ public class GameInstaller : MonoInstaller {
         //     .WithGameObjectName("Stone")
         //     .UnderTransformGroup("Stones");
 
+        Container.BindFactory<PortalCreateParam, PortalController, PortalController.Factory>()
+            .FromMethod(CreatePortal); //рабочий вариант
         Container.BindFactory<StoneCreateParam, StoneController, StoneController.Factory>()
             .FromMethod(CreateStone); //рабочий вариант
         Container.BindFactory<TubeCreateParam, TubeController, TubeController.Factory>()
@@ -46,6 +49,14 @@ public class GameInstaller : MonoInstaller {
                 GameObject.Find("Stones").transform);
         stone.transform.position = new Vector3(createParam.Position.x, createParam.Position.y, 0f);
         return stone;
+    }
+
+    private PortalController CreatePortal(DiContainer subContainer, PortalCreateParam createParam) {
+        PortalController portal =
+            subContainer.InstantiatePrefabForComponent<PortalController>(createParam.Prefab,
+                GameObject.Find("Portals").transform);
+        portal.transform.position = new Vector3(createParam.Position.x, createParam.Position.y, 0f);
+        return portal;
     }
 
     TubeController CreateTube(DiContainer subContainer, TubeCreateParam createParam) {

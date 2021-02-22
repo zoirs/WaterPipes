@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}
 --- !u!1 &2626355876708126024
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}
 --- !u!1 &3010393523681474094
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}
 --- !u!1 &3432452157904272280
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}
 --- !u!1 &6770953441714147485
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}
 --- !u!1 &8219685359865372224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}
 --- !u!1 &8295555727843214591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 3
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}
 --- !u!1 &8885618209107129570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,4 +1415,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 3
-  tubeController: {fileID: 0}
+  parent: {fileID: 4689654805253520765}

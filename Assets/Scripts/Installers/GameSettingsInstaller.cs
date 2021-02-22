@@ -33,10 +33,6 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
     [Serializable]
     public class PrefabSettings
     {
-        public GameObject LinePrefab;
-        public GameObject TrainPrefab;
-        public GameObject StationPrefab;
-        public GameObject ManufacturePrefab;
         
         public GameObject Tube1Prefab;
         public GameObject Tube2Prefab;
@@ -47,12 +43,12 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
         public GameObject TubeTrianglePrefab;
         public GameObject TubeQuatroPrefab;
         
-        
         public GameObject WaterPrefab;
         public GameObject WaterPrefab2_2;
         public GameObject HomePrefab;
         public GameObject HomePrefab2_2;
         public GameObject StonePrefab;
+        public GameObject PortalPrefab;
     }
     
     [Serializable]

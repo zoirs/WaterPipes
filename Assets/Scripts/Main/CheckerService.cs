@@ -7,6 +7,7 @@ namespace Main {
         
         [Inject] readonly HomeManager homeManager;
         [Inject] readonly TubeManager tubeManager;
+        [Inject] readonly PortalManager portalManager;
         [Inject] readonly WaterManager waterManager;
         [Inject] readonly GameController gameController;
 
@@ -24,8 +25,8 @@ namespace Main {
             // }
             bool result = true;
             foreach (WaterController waterController in waterManager.Objects) {
-                TubeEndController[] points = waterController.GetComponentsInChildren<TubeEndController>();
-                foreach (TubeEndController point in points) {
+                ConnectorController[] points = waterController.GetComponentsInChildren<ConnectorController>();
+                foreach (ConnectorController point in points) {
                     result &= Find(point);
                 }
             }
@@ -43,38 +44,52 @@ namespace Main {
             // tubeManager.Find(wpInt + Vector3Int.right, Direction.LEFT);
         }
 
-        public bool Find(TubeEndController tubeEndController) {
-        Vector3Int endPosition = tubeEndController.GetVector();
-        Vector3Int connectPosition = endPosition + tubeEndController.GetDirection().GetVector();
-        Direction connectDirection = tubeEndController.GetDirection().Invert();
+        public bool Find(ConnectorController connectorController) {
+        // Vector3Int endPosition = connectorController.GetVector();
+        // Vector3Int connectPosition = endPosition + connectorController.GetDirection().GetVector();
+        // Direction connectDirection = connectorController.GetDirection().Invert();
 
-        List<HomeController> homeManagerHomes = homeManager.Objects;
-        foreach (HomeController homeManagerHome in homeManagerHomes) {
-            foreach (TubeEndController freeConnecter in homeManagerHome.GetFreeConnecter()) {
-                if (freeConnecter.GetVector() == connectPosition &&
-                    freeConnecter.GetDirection() == connectDirection) {
-                    freeConnecter.Connect(tubeEndController);
-                    tubeEndController.Connect(freeConnecter);
-                    homeManagerHome.MarkWater();
+        List<HomeController> homes = homeManager.Objects;
+        foreach (HomeController home in homes) {
+            foreach (ConnectorController freeConnecter in home.GetFreeConnecter()) {
+                if (freeConnecter.TryConnect(connectorController)) {
                     return true;
                 }
             }
         }
 
+        bool isPortalConnected = false;
+        foreach (PortalController portal in portalManager.Objects) {
+            foreach (ConnectorController freeConnecter in portal.GetFreeConnecter()) {
+                if (freeConnecter.TryConnect(connectorController)) {
+                    isPortalConnected = true;
+                    break;
+                }
+            }
+        }
+
+        if (isPortalConnected) {
+            foreach (PortalController portal in portalManager.Objects) {
+                portal.MarkWater();
+                ConnectorController[] points = portal.GetComponentsInChildren<ConnectorController>();
+                foreach (ConnectorController point in points) {
+                    Find(point);
+                }
+            }
+            return true;
+        }
+
         foreach (TubeController tube in tubeManager.Objects) {
-            if (tubeEndController.GetParentTube() != null && tubeEndController.GetParentTube() == tube) {
+            if (connectorController.GetParentTube() != null && connectorController.GetParentTube() == tube) {
                 continue;
             }
 
-            List<TubeEndController> freeConnecters = tube.GetFreeConnecter();
-            foreach (TubeEndController freeConnecter in freeConnecters) {
-                if (freeConnecter.GetVector() == connectPosition && freeConnecter.GetDirection() == connectDirection) {
-                    freeConnecter.Connect(tubeEndController);
-                    tubeEndController.Connect(freeConnecter);
-                    tube.MarkWater();
-                    List<TubeEndController> otherConnecters = tube.GetFreeConnecter();
+            List<ConnectorController> freeConnecters = tube.GetFreeConnecter();
+            foreach (ConnectorController freeConnecter in freeConnecters) {
+                if (freeConnecter.TryConnect(connectorController)) {
+                    List<ConnectorController> otherConnecters = tube.GetFreeConnecter();
                     bool allOtherEndsConnected = true;
-                    foreach (TubeEndController endController in otherConnecters) {
+                    foreach (ConnectorController endController in otherConnecters) {
                         bool result = Find(endController);
                         if (!result) {
                             Debug.Log("Кажется, есть утечка");
@@ -87,7 +102,7 @@ namespace Main {
             }
         }
         // Если это труба от колодца, то не учитываем что ничего не нашли
-        return tubeEndController.GetParentTube() == null;
+        return connectorController.GetParentTube() == null;
     }
 
     }
