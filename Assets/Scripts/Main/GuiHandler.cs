@@ -193,12 +193,15 @@ public class GuiHandler : MonoBehaviour {
                     }
                     GUILayout.EndHorizontal();
 
+                    GUILayout.BeginHorizontal();
+
                     if (GUILayout.Button("Камень")) {
                         _stoneManager.CreateDebug();
                     }
                     if (GUILayout.Button("Портал")) {
                         _portalManager.CreateDebug();
                     }
+                    GUILayout.EndHorizontal();
 
                     if (GUILayout.Button("Сохранить уровень")) {
                         _levelManager.SaveLevel();
